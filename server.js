@@ -32,9 +32,21 @@ app.get("/notes", function(req, res)
 // GET
 app.get("/api/notes", function(req, res)
 {
+    let noteInfo = fs.readFileSync("db/db.json");
+    let savedData = JSON.parse(noteInfo);
 
+    res.json(savedData);
 });
 
+app.post("/api/notes", function(req, res)
+{
+    let notesArr = [];
+    let newNote = {
+        title: req.body.title,
+        text: req.body.text
+    };
+    
+})
 // Start the server
 app.listen(PORT, function()
 {
